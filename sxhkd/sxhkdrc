@@ -1,0 +1,52 @@
+#Terminal
+super + t
+	kitty
+
+#Launcher
+super + space
+	rofi -modi drun#ssh -show drun
+
+#Restart bspcwm
+super + q
+	bspc wm -r
+
+#Restart sxhkd
+super + shift + q
+	pkill -USR1 -x sxhkd
+
+#Move to desktop	
+super + {_,shift} + {1-9,0}
+        bspc {desktop -f,node -d} '^{1-9,10}'
+
+#Switch with largest window
+super + g
+        bspc node -s biggest.local
+
+#Close window
+super + w
+	bspc node -c
+
+#Toggle Fullscreen
+super + f
+	bspc node -t \~fullscreen
+
+#Rotate tree
+super + shift + {d,a}
+    bspc node @/ -C {forward,backward
+
+#Focus the node in the given direction
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}
+
+#Audio
+# Volume +-
+{XF86AudioRaiseVolume,XF86AudioLowerVolume}
+    pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
+
+# Volume Mute
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+#Print Screen
+Print
+	flameshot gui
